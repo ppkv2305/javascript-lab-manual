@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function calculateDepreciation(initialCost, usefulLife) {
+  if (usefulLife <= 0) {
+    console.log("Useful life must be greater than 0.");
+    return;
+  }
+
+  let depreciationSchedule = [];
+
+  let totalDigits = 0;
+  for (let i = usefulLife; i >= 1; i--) {
+    totalDigits += i;
+  }
+
+  for (let year = 1; year <= usefulLife; year++) {
+    const fraction = usefulLife - (year - 1);
+    const depreciationExpense = (fraction / totalDigits) * initialCost;
+
+    depreciationSchedule.push({
+      year,
+      depreciationExpense,
+      accumulatedDepreciation: depreciationSchedule.reduce((acc, entry) => acc + entry.depreciationExpense, 0),
+      bookValue: initialCost - depreciationSchedule.reduce((acc, entry) => acc + entry.depreciationExpense, 0)
+    });
+  }
+
+  return depreciationSchedule;
+}
+
+// Example usage:
+const initialCost = 1000; // Initial cost of the asset
+const usefulLife = 1;     // Useful life in years
+
+const schedule = calculateDepreciation(initialCost, usefulLife);
+
+console.log("Year\tDepreciation Expense\tAccumulated Depreciation\tBook Value");
+schedule.forEach(entry => {
+  console.log(`${entry.year}\t$${entry.depreciationExpense.toFixed(2)}\t\t$${entry.accumulatedDepreciation.toFixed(2)}\t\t$${entry.bookValue.toFixed(2)}`);
+});
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

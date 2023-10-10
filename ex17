@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function capitalizeFirstLetter(str){
+            const capitalized=str.charAt(0).toUpperCase()+str.slice(1);
+            return capitalized;
+        }
+        const string=prompt('Enter a string: ');
+        const result=capitalizeFirstLetter(string);
+        console.log(result);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

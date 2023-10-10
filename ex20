@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // Function to convert rectangular coordinates to polar coordinates
+function rectangularToPolar(x, y) {
+  const radius = Math.sqrt(x * x + y * y);
+  const angleRad = Math.atan2(y, x);
+  const angleDeg = (angleRad * 180) / Math.PI;
+
+  return { radius, angleRad, angleDeg };
+}
+
+// Function to convert polar coordinates to rectangular coordinates
+function polarToRectangular(radius, angleRad) {
+  const x = radius * Math.cos(angleRad);
+  const y = radius * Math.sin(angleRad);
+
+  return { x, y };
+}
+
+// Example usage:
+const rectangularCoords = { x: 3, y: 4 };
+const polarCoords = rectangularToPolar(rectangularCoords.x, rectangularCoords.y);
+
+console.log("Rectangular to Polar:");
+console.log("Rectangular Coordinates:", rectangularCoords);
+console.log("Polar Coordinates:", polarCoords);
+
+const polarCoords2 = { radius: 5, angleRad: Math.PI / 3 };
+const rectangularCoords2 = polarToRectangular(polarCoords2.radius, polarCoords2.angleRad);
+
+console.log("\nPolar to Rectangular:");
+console.log("Polar Coordinates:", polarCoords2);
+console.log("Rectangular Coordinates:", rectangularCoords2);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
